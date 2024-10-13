@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import ora from 'ora';
@@ -6,7 +5,6 @@ import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
-// Logotipo en arte ASCII
 const logo = `
 
 ${chalk.bold.green("'##:::'##:'########:'##::::'##::::'###:::::'######:::'########:'##::: ##:::::'######::'##:::::::'####:")}
