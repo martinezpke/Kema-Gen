@@ -12,7 +12,7 @@
     "kemagen": "index.js"
   },
   "keywords": ["cli", "node", "kemaGen"],
-  "author": "Kemapa",
+  "author": "martinezpke",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.3.0",
