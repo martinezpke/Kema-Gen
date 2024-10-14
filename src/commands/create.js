@@ -4,6 +4,7 @@ import ora from 'ora';
 import { execSync } from 'child_process';
 import path from 'path';
 import fs from 'fs';
+import simpleGit from 'simple-git';
 import { createProjectStructure } from '../utils/project.js';
 
 const logo = `
@@ -27,6 +28,7 @@ const questions = [
         choices: [
             { name: 'API (Node.js)', value: 'api' },
             { name: 'Aplicación Monolítica (Node.js)', value: 'monolith' },
+            { name: 'Aplicación CLI (Node.js)', value: 'cli' }
         ]
     },
     {
@@ -50,32 +52,32 @@ async function createCommand() {
     const projectDir = path.join(process.cwd(), answers.projectName);
 
     // Crear la ruta con el nombre asignado
-    if (!fs.existsSync(projectDir)) {
-        fs.mkdirSync(projectDir, { recursive: true });
+    if (fs.existsSync(projectDir)) {
+        console.log(chalk.red('El directorio ya existe. Elige otro nombre.'));
+        return;
     }
+    const git = simpleGit();
 
     // Crear estructura del proyecto
-    const spinner = ora(' Creando estructura del proyecto...').start();
+    const spinner = ora('Clonando el repositorio...\n\n').start();
 
     try {
-        // Inicializar package.json
-        spinner.text = chalk.yellow('  Inicializando package.json...');
-        execSync(`pnpm init`, { cwd: projectDir, stdio: 'inherit' });
 
         // Crear la estructura según el tipo de proyecto
-        await createProjectStructure(projectDir, answers.projectType);
+        await createProjectStructure(git, projectDir, answers.projectType);
 
         // Crear archivo .env y README.md
-        console.log(chalk.yellow('  Creando archivos .env y README.md...'));
-        fs.writeFileSync(path.join(projectDir, '.env'), ''); // Archivo .env vacío
+        console.log(chalk.yellow('  Creando archivos README.md...'));
         fs.writeFileSync(path.join(projectDir, 'README.md'), `# ${answers.projectName}\n\nProyecto generado por KemaGen CLI.`);
-        console.log(chalk.green('  Archivos .env y README.md creados con éxito! \n\n'));
+        console.log(chalk.green('  Archivos README.md creados con éxito! \n\n\n'));
 
         // Finalizar el spinner
         spinner.succeed(`${chalk.yellow(` Proyecto ${chalk.bold(answers.projectName)} creado exitosamente.`)}`);
     } catch (error) {
         spinner.fail(chalk.red('Error al crear el proyecto.'));
         console.error(chalk.red(error.message));
+    } finally {
+        spinner.stop();
     }
 
     console.log(chalk.blue('------------------------------------------------'));
