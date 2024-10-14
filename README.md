@@ -1,4 +1,4 @@
-# KemaGen CLI v1.0.2
+# KemaGen CLI v1.0.3
 
 **KemaGen** es una herramienta de línea de comandos diseñada para facilitar la creación de proyectos Node.js de manera rápida y sencilla. Permite a los desarrolladores inicializar proyectos tanto de tipo API como de aplicación monolítica con una estructura predefinida.
 
