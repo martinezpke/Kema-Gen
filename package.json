@@ -1,6 +1,6 @@
 {
   "name": "kemagen-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Una herramienta CLI para crear proyectos Node.js rápidamente",
   "main": "bin/cli.js",
   "type": "module",
