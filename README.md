@@ -8,6 +8,7 @@
 - [Uso](#uso)
 - [Comandos Disponibles](#comandos-disponibles)
 - [Estructura del Proyecto](#estructura-del-proyecto)
+  - [Mejoras y Contribuciones](#Mejoras-yContribuciones)
 - [Ejemplos](#ejemplos)
 - [Contribuciones](#contribuciones)
 - [Licencia](#licencia)
