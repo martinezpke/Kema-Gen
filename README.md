@@ -29,7 +29,7 @@ pnpm install -g kema-gen-cli
 Una vez instalado, puedes usar KemaGen desde la línea de comandos. Simplemente escribe:
 
 ```bash
-kema-gen [comando]
+kemagen [comando]
 ```
 
 ## Comandos Disponibles
